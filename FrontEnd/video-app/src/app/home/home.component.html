@@ -1,0 +1,24 @@
+<div class="containter">
+    <div class="row" *ngIf="isShowVideo">
+        <div class="col-md-12">
+            <div class="d-flex align-items-center justify-content-center">
+                <video   controls preload="auto" >
+                    <source src="{{getImg(videoUrl)}}">
+                 </video>
+            </div>
+          
+        </div>
+    </div>
+    <div class="row mg-top-20">
+        <div class="col-md-4 col-sm-12" *ngFor="let video of videos" (click)="showVideo(video)" >
+          
+                <img class="img-fluid" src="{{getImg(video.cover)}}">
+               
+                <p>{{video.title}} </p>
+           
+        </div>
+        <div class="col-md-12" *ngIf="isNoVideo">
+            No Video
+        </div>
+    </div>
+</div>

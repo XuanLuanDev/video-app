@@ -1,0 +1,33 @@
+
+<div class="side-navbar d-flex justify-content-between flex-wrap flex-column" id="sidebar"  [ngClass]="isOpen?'active-nav':''">
+  <ul class="nav flex-column text-white w-100">
+    <a  [routerLink]="['/']" class="nav-link h3 text-white my-2">
+      Video App
+    </a>
+    <li  class="nav-link" (click)="goHome()">
+        <i class="bx bxs-dashboard"></i>
+        <span class="mx-2">Home</span>
+    </li>
+    <li  class="nav-link" (click)="goUpload()">
+      <i class='bx bxs-cloud-upload'></i>
+      <span class="mx-2">Upload</span>
+    </li>
+    <li  class="nav-link" (click)="goList()">
+      <i class='bx bx-list-ul'></i>
+      <span class="mx-2">List</span>
+    </li>
+  </ul>
+
+  <span href="#" class="nav-link h4 w-100 mb-5">
+    <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
+    <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
+    <a href=""><i class="bx bxl-facebook text-white"></i></a>
+  </span>
+</div>
+
+<div class="p-1 my-container "  [ngClass]="isOpen?'active-cont':''">
+  <nav class="navbar top-navbar navbar-light bg-light px-5">
+    <a class="btn border-0" id="menu-btn" (click)="toggle()"><i class="bx bx-menu"></i></a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

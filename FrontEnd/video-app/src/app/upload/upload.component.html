@@ -1,0 +1,32 @@
+<div class="container mg-top-20">
+    <h2 class="text-center">Upload video</h2>
+    <div class="row mg-top-20">
+         <form class="needs-validation" novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="row justify-content-md-center">
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input type="text" formControlName="title" class="form-control" id="title"
+                    >
+            </div>
+            <div class="form-group">
+              <label for="picture">Image Cover</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="cover" 
+                       (change)="onFileChanged($event)" accept=".jpg,.png,.bmp">
+                <label class="custom-file-label" for="cover">{{fileInfo}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="picture">Video</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="video"
+                         (change)="onVideoChanged($event)" accept=".mpeg,.mp4,.flv,.avi,.wmv,.mov,.3gp">
+                  <label class="custom-file-label"  for="video">{{videoInfo}}</label>
+                </div>
+              </div>
+              <div class="form-group  mg-top-20">
+                <input type="submit" value="Submit" style="width:150px;"  class="btn btn-primary " [disabled]="form.invalid"/>
+              </div>
+           
+          </form>
+    </div>
+</div> 
