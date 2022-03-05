@@ -49,7 +49,7 @@ export class UploadComponent implements OnInit {
       formData.append(key, value);
     }
     this.service.upload(formData).subscribe(res => {
-     this.router.navigateByUrl('/list');
+     this.router.navigateByUrl('/videos');
     },(error)=>{
       alert('Has Error');
      console.log(error);

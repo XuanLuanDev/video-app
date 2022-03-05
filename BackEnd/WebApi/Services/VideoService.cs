@@ -12,6 +12,8 @@ namespace WebApi.Services
     {
         public  Task<bool> UploadFile(VideoModel video);
         public IEnumerable<object> GetList();
+        public IEnumerable<object> GetListDetail(VideoListDetailParam param);
+        public bool Delete(List<VideoListDetailParam> param);
     }
     public class VideoService: IVideoService
     {
@@ -100,6 +102,35 @@ namespace WebApi.Services
                     }
                     ).ToList();
         }
-        
+        public IEnumerable<object> GetListDetail(VideoListDetailParam param)
+        {
+            return (from vd in _context.Videos
+                    select new
+                    {
+                        id = vd.Id,
+                        title = vd.Title,
+                        cover = vd.Cover,
+                        url = vd.Url,
+                        is_current =vd.Id == param.Id
+                    }
+                    ).ToList();
+        }
+
+        public  bool Delete(List<VideoListDetailParam> param)
+        {
+            try
+            {
+                List<string> Ids = param.Select(t => t.Id).ToList();
+                var vd = _context.Videos.Where(t => Ids.Contains(t.Id));
+                _context.RemoveRange(vd);
+                  _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+         
+        }
     }
 }

@@ -3,7 +3,7 @@ import { Video } from '../video';
 import { HomeService } from './home.service';
 import { environment } from 'src/environments/environment';
 import { Endpoints } from '../endpoints';
-import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +16,7 @@ export class HomeComponent implements OnInit {
   isNoVideo =true;
   videoTitle: string = '';
   videoUrl:string = '';
-  isShowVideo = false;
-  constructor(private service:HomeService) { }
+  constructor(private service:HomeService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -33,11 +32,6 @@ export class HomeComponent implements OnInit {
     return environment.domainUrl+src;
   }
   showVideo(vd:any){
-    this.isShowVideo =false;
-    this.videoTitle='';
-    this.videoUrl ='';
-    this.videoTitle=vd.title;
-    this.videoUrl =vd.url;
-    this.isShowVideo =true;
+   this.router.navigate(['/video',vd.id]);
   }
 }

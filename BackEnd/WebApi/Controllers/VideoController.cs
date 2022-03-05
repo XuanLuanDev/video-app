@@ -47,7 +47,34 @@ namespace WebApi.Controllers
             }
            
         }
-       
+        [HttpPost("getListDetail")]
+        public ActionResult<IEnumerable<object>> GetListDetail(VideoListDetailParam param)
+        {
+            try
+            {
+                var res = _service.GetListDetail(param);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+
+        }
+        [HttpPost("delete")]
+        public ActionResult<IEnumerable<object>> Delete(List<VideoListDetailParam> param)
+        {
+            try
+            {
+                var res = _service.Delete(param);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+
+        }
     }
 
 }

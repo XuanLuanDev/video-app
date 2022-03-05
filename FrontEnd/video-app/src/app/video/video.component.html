@@ -1,1 +1,21 @@
-<p>video works!</p>
+<div class="row" >
+    <div class="col-md-9 col-sm-12">
+            <video   controls src="{{getImg(video?.url)}}" >
+             </video>
+      
+      
+    </div>
+    <div class="col-md-3 col-sm-12">
+          <div  *ngFor="let video of videos" (click)="showVideo(video)" >
+            <ng-container *ngIf="!video.is_current"> 
+                <img class="img-fluid" src="{{getImg(video.cover)}}">
+       
+                <p>{{video.title}} </p>
+              </ng-container> 
+          </div>
+          
+          
+        
+   
+</div>
+</div>
